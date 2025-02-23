@@ -94,6 +94,7 @@ body {
   gap: 30px;
   min-height: 100vh;
   background-color: #f8f9fa;
+  color: #333;
 }
 
 /* Lab listing */
@@ -109,6 +110,13 @@ body {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #333;
+}
+
+.dark-mode .tabs-section {
+  background-color: #333;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.1);
 }
 
 .tab-buttons {
@@ -125,6 +133,23 @@ body {
   cursor: pointer;
   text-align: left;
   transition: all 0.3s ease;
+  color: #333;
+}
+
+.dark-mode .tab-button {
+  background-color: #444;
+  border-color: #555;
+  color: #ffffff;
+}
+
+.dark-mode .tab-button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.dark-mode .tab-button.active {
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .tab-button:hover {
@@ -210,7 +235,14 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 2;
     margin-left: 20px;
-  }
+    color: #333;
+}
+
+.dark-mode .profile-section {
+    background-color: #333;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+}
   
   .profile-photo {
     width: 100%;
@@ -219,7 +251,11 @@ body {
     margin-bottom: 20px;
     border: 3px solid #007bff;
     padding: 3px;
-  }
+}
+
+.dark-mode .profile-photo {
+    border-color: #007bff;
+}
   
   /* Mobile responsiveness */
   @media (max-width: 768px) {
@@ -262,3 +298,55 @@ body {
     .tab-content.active {
       animation: fadeIn 0.5s ease;
     }
+
+.dark-mode-btn {
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-tab {
+    background-color: #444;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-tab:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-tab.active {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-panel {
+    background-color: #444;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-panel h2 {
+    color: #007bff;
+}
+
+.dark-mode .dashboard-panel p {
+    color: #e0e0e0;
+}
+
+.dark-mode .dark-mode-btn {
+    background-color: #555;
+}
