@@ -77,24 +77,56 @@ function createIframe(container) {
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContent = document.querySelector('.tab-content');
 
-tabButtons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    // Remove active class from all buttons
-    tabButtons.forEach(btn => btn.classList.remove('active'));
+tabButtons[0].addEventListener('click', () => {
+  // Remove active class from all buttons
+  tabButtons.forEach(btn => btn.classList.remove('active'));
 
-    // Add active class to clicked button
-    button.classList.add('active');
+  // Add active class to clicked button
+  tabButtons[0].classList.add('active');
 
-    // Show the iframe grid
-    tabContent.classList.add('active');
+  // Show the iframe grid
+  tabContent.classList.add('active');
 
-    // Unselect any dashboard tabs and hide dashboard content
-    dashboardTabs.forEach(tab => tab.classList.remove('active'));
-    dashboardContent.classList.remove('active');
-  });
+  // Unselect any dashboard tabs and hide dashboard content
+  dashboardTabs.forEach(tab => tab.classList.remove('active'));
+  dashboardContent.classList.remove('active');
 });
-// Create single iframe
+
+// Add click handlers for Lab 2 and 3 without iframe creation
+tabButtons[1].addEventListener('click', () => {
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  tabButtons[1].classList.add('active');
+  tabContent.classList.add('active');
+  dashboardTabs.forEach(tab => tab.classList.remove('active'));
+  dashboardContent.classList.remove('active');
+});
+
+tabButtons[2].addEventListener('click', () => {
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  tabButtons[2].classList.add('active');
+  tabContent.classList.add('active');
+  dashboardTabs.forEach(tab => tab.classList.remove('active'));
+  dashboardContent.classList.remove('active');
+});
+// Create and show iframe for Lab 1
 createIframe(iframeGrid);
+tabContent.classList.add('active');
 
 // Hide iframe grid initially
 tabContent.classList.remove('active');
+
+// Dark mode toggle functionality
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  
+  // Save user preference
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', isDarkMode);
+});
+
+// Check for saved dark mode preference
+const savedDarkMode = localStorage.getItem('darkMode');
+if (savedDarkMode === 'true') {
+  document.body.classList.add('dark-mode');
+}
