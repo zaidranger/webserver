@@ -40,7 +40,7 @@
 
 /* Dashboard content styles */
 .dashboard-content {
-  position: fixed;
+  position: absolute;
   top: 70px;
   left: 243px;
   right: 343px;
