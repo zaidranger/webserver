@@ -92,13 +92,15 @@ tabButtons[0].addEventListener('click', () => {
   dashboardContent.classList.remove('active');
 });
 
-// Add click handlers for Lab 2 and 3 without iframe creation
+// Add click handlers for Lab 2 and 3 with iframe grid clearing
 tabButtons[1].addEventListener('click', () => {
   tabButtons.forEach(btn => btn.classList.remove('active'));
   tabButtons[1].classList.add('active');
   tabContent.classList.add('active');
   dashboardTabs.forEach(tab => tab.classList.remove('active'));
   dashboardContent.classList.remove('active');
+  // Clear iframe grid for Lab 2
+  iframeGrid.innerHTML = '';
 });
 
 tabButtons[2].addEventListener('click', () => {
@@ -107,10 +109,17 @@ tabButtons[2].addEventListener('click', () => {
   tabContent.classList.add('active');
   dashboardTabs.forEach(tab => tab.classList.remove('active'));
   dashboardContent.classList.remove('active');
+  // Clear iframe grid for Lab 3
+  iframeGrid.innerHTML = '';
 });
 // Create and show iframe for Lab 1
-createIframe(iframeGrid);
-tabContent.classList.add('active');
+tabButtons[0].addEventListener('click', () => {
+  // Clear existing iframes
+  iframeGrid.innerHTML = '';
+  // Create new iframe for Lab 1
+  createIframe(iframeGrid);
+  tabContent.classList.add('active');
+});
 
 // Hide iframe grid initially
 tabContent.classList.remove('active');
