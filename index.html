@@ -30,7 +30,18 @@
     <div class="dashboard-panel" id="konfigurasi-content">
       <h2>Konfigurasi</h2>
       <p>Antaramuka utama sistem pengurusan.</p>
-      <button id="dark-mode-toggle" class="dark-mode-btn">Tukar menjadi Malam</button>
+      <div class="theme-customization">
+        <button id="dark-mode-toggle" class="dark-mode-btn">Tukar menjadi Malam</button>
+        <div class="color-picker-container">
+          <label for="theme-color">Pilih Warna Tema:</label>
+          <input type="color" id="theme-color" value="#007bff">
+          <button id="reset-theme" class="reset-btn">Reset ke Default</button>
+        </div>
+        <div class="color-preview">
+          <div class="preview-box" style="background-color: var(--primary-color)"></div>
+          <span>Warna Tema Semasa</span>
+        </div>
+      </div>
     </div>
     <div class="dashboard-panel" id="carta-content">
       <h2>Carta Organisasi</h2>

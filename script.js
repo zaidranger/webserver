@@ -129,18 +129,117 @@ tabButtons[0].addEventListener('click', () => {
 // Hide iframe grid initially
 tabContent.classList.remove('active');
 
-// Dark mode toggle functionality
+// Theme customization functionality
 const darkModeToggle = document.getElementById('dark-mode-toggle');
+const themeColorPicker = document.getElementById('theme-color');
+const resetThemeBtn = document.getElementById('reset-theme');
+const previewBox = document.querySelector('.preview-box');
+
+// Apply theme color
+function applyThemeColor(color) {
+  // Calculate lighter and darker shades for hover states
+  const lighterColor = lightenColor(color, 20);
+  const darkerColor = darkenColor(color, 20);
+  
+  // Update CSS variables
+  document.documentElement.style.setProperty('--primary-color', color);
+  document.documentElement.style.setProperty('--primary-color-light', lighterColor);
+  document.documentElement.style.setProperty('--primary-color-dark', darkerColor);
+  
+  // Update UI elements
+  previewBox.style.backgroundColor = color;
+  themeColorPicker.value = color;
+  
+  // Update button hover states
+  const buttons = document.querySelectorAll('button:not(.dark-mode-btn)');
+  buttons.forEach(button => {
+    button.style.backgroundColor = color;
+    button.addEventListener('mouseover', () => {
+      button.style.backgroundColor = lighterColor;
+    });
+    button.addEventListener('mouseout', () => {
+      button.style.backgroundColor = color;
+    });
+  });
+}
+
+// Helper function to lighten a color
+function lightenColor(color, percent) {
+  const num = parseInt(color.slice(1), 16);
+  const amt = Math.round(2.55 * percent);
+  const r = (num >> 16) + amt;
+  const g = (num >> 8 & 0x00FF) + amt;
+  const b = (num & 0x0000FF) + amt;
+  return `#${(0x1000000 + (r < 255 ? r : 255) * 0x10000 +
+    (g < 255 ? g : 255) * 0x100 + (b < 255 ? b : 255))
+    .toString(16).slice(1)}`;
+}
+
+// Helper function to darken a color
+function darkenColor(color, percent) {
+  const num = parseInt(color.slice(1), 16);
+  const amt = Math.round(2.55 * percent);
+  const r = (num >> 16) - amt;
+  const g = (num >> 8 & 0x00FF) - amt;
+  const b = (num & 0x0000FF) - amt;
+  return `#${(0x1000000 + (r > 0 ? r : 0) * 0x10000 +
+    (g > 0 ? g : 0) * 0x100 + (b > 0 ? b : 0))
+    .toString(16).slice(1)}`;
+}
+
+// Save theme color
+function saveThemeColor(color) {
+  localStorage.setItem('themeColor', color);
+}
+
+// Load theme color
+function loadThemeColor() {
+  const savedColor = localStorage.getItem('themeColor');
+  if (savedColor) {
+    applyThemeColor(savedColor);
+  }
+}
+
+// Dark mode toggle functionality
 darkModeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   
-  // Update button text based on current mode
-  const isDarkMode = document.body.classList.contains('dark-mode');
-  darkModeToggle.textContent = isDarkMode ? 'Tukar menjadi Siang' : 'Tukar menjadi Malam';
-  
   // Save user preference
+  const isDarkMode = document.body.classList.contains('dark-mode');
   localStorage.setItem('darkMode', isDarkMode);
+  
+  // Update button text
+  darkModeToggle.textContent = isDarkMode ? 'Tukar menjadi Siang' : 'Tukar menjadi Malam';
 });
+
+// Handle color picker changes
+themeColorPicker.addEventListener('input', (e) => {
+  const selectedColor = e.target.value;
+  applyThemeColor(selectedColor);
+  saveThemeColor(selectedColor);
+});
+
+// Handle reset button click
+resetThemeBtn.addEventListener('click', () => {
+  const defaultColor = '#007bff';
+  applyThemeColor(defaultColor);
+  saveThemeColor(defaultColor);
+  themeColorPicker.value = defaultColor;
+});
+
+// Load saved preferences on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Load dark mode preference
+  const savedDarkMode = localStorage.getItem('darkMode');
+  if (savedDarkMode === 'true') {
+    document.body.classList.add('dark-mode');
+    darkModeToggle.textContent = 'Tukar menjadi Siang';
+  }
+  
+  // Load theme color
+  loadThemeColor();
+});
+
 
 // Check for saved dark mode preference
 const savedDarkMode = localStorage.getItem('darkMode');

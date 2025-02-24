@@ -126,6 +126,14 @@ margin-bottom: 15px;
   background-color: #444;
 }
 
+:root {
+  --primary-color: #007bff;
+  --primary-color-light: #3395ff;
+  --primary-color-dark: #0062cc;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+}
 
 /* Base styles */
 body {
@@ -369,12 +377,68 @@ iframe.fullscreen {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.theme-customization {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+}
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.color-picker-container label {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.color-picker-container input[type="color"] {
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reset-btn {
+  padding: 8px 16px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.color-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.preview-box {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: var(--primary-color);
 }
 
 /* Dark mode styles */
 body.dark-mode {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  --primary-color: #1e90ff;
+  --secondary-color: #4a5568;
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .dark-mode .dashboard {
