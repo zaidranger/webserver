@@ -372,13 +372,14 @@ iframe.fullscreen {
 
 .dark-mode-btn {
   padding: 8px 16px;
-  background-color: #333;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-bottom: 10px;
 }
+
 
 .theme-customization {
   margin-top: 20px;
@@ -475,5 +476,9 @@ body.dark-mode {
 }
 
 .dark-mode .dark-mode-btn {
-  background-color: #555;
+  background-color: var(--primary-color);
+}
+
+.dark-mode .dark-mode-btn:hover {
+  background-color: var(--primary-color-light);
 }
