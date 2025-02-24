@@ -42,8 +42,8 @@
 .dashboard-content {
   position: fixed;
   top: 70px;
-  left: 240px;
-  right: 340px;
+  left: 243px;
+  right: 343px;
   padding: 20px;
   background-color: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -107,15 +107,15 @@ body {
 /* Lab listing */
 .tabs-section {
   width: 200px;
-  position: fixed;
-  left: 20px;
-  top: 100px; /* Adjusted to account for dashboard height */
+  position: absolute;
+  left: 0;
+  top: 70px;
   bottom: 20px;
   overflow-y: auto;
   z-index: 2;
   background-color: white;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 12px 0 0 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   color: #333;
 }
@@ -124,6 +124,7 @@ body {
   background-color: #333;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+  border-radius: 12px 0 0 12px;
 }
 
 .tab-buttons {
