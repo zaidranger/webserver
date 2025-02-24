@@ -134,8 +134,11 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
 darkModeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   
-  // Save user preference
+  // Update button text based on current mode
   const isDarkMode = document.body.classList.contains('dark-mode');
+  darkModeToggle.textContent = isDarkMode ? 'Tukar menjadi Siang' : 'Tukar menjadi Malam';
+  
+  // Save user preference
   localStorage.setItem('darkMode', isDarkMode);
 });
 
@@ -143,4 +146,5 @@ darkModeToggle.addEventListener('click', () => {
 const savedDarkMode = localStorage.getItem('darkMode');
 if (savedDarkMode === 'true') {
   document.body.classList.add('dark-mode');
+  darkModeToggle.textContent = 'Tukar menjadi Siang';
 }
