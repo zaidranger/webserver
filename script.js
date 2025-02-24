@@ -61,7 +61,12 @@ function createIframe(container) {
       dashboardPanels.forEach(panel => panel.classList.remove('active'));
       
       // Show the corresponding panel
-      const panelId = tab.textContent.toLowerCase().replace(' ', '-') + '-content';
+      // Special cases for panel IDs
+      const panelId = tab.textContent.toLowerCase() === 'carta organisasi' 
+        ? 'carta-content' 
+        : tab.textContent.toLowerCase() === 'support tiket'
+        ? 'support-content'
+        : tab.textContent.toLowerCase().replace(' ', '-') + '-content';
       const activePanel = document.getElementById(panelId);
     if (activePanel) {
       activePanel.classList.add('active');
