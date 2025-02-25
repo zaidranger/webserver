@@ -8,7 +8,7 @@ function createIframe(container) {
   iframeContainer.classList.add('iframe-container');
 
   const iframe = document.createElement('iframe');
-  iframe.src = `https://mesh.pta15.dedyn.io/?viewmode=11&hidden=32&gotonode=WkfHSwdnpWoJ3vfxs0LZ3omlbzLnEjpaJ@4oANDfX3CayKO1CyCnTYeyDQj$rY6a&hide=31&login=Eg7in=Eg7E8WSd3IV9WRBKOS77n4UESHkHSXplg1ZZ892ok0jD$g9paaEhrxB21G87aQ9DqV65kBnds$bMFJxhcwPh67czMg8e6w==`;
+  iframe.src = `https://mesh.pta15.dedyn.io/?viewmode=11&gotonode=enOabeFYC@2HGNmQsFui8q9AYXIguOqEAZxibQ6FND7UwMtcv8sohqz4B7xhoGLP&hide=31&login=Eg7in=Eg7E8WSd3IV9WRBKOS77n4UESHkHSXplg1ZZ892ok0jD$g9paaEhrxB21G87aQ9DqV65kBnds$bMFJxhcwPh67czMg8e6w==`;
 
   // Create fullscreen button
   const fullscreenBtn = document.createElement('button');
