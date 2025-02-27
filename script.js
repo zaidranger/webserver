@@ -227,6 +227,7 @@ resetThemeBtn.addEventListener('click', () => {
   themeColorPicker.value = defaultColor;
 });
 
+
 // Load saved preferences on page load
 document.addEventListener('DOMContentLoaded', () => {
   // Load dark mode preference
