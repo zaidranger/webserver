@@ -240,11 +240,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load theme color
   loadThemeColor();
 });
-
-
-// Check for saved dark mode preference
-const savedDarkMode = localStorage.getItem('darkMode');
-if (savedDarkMode === 'true') {
-  document.body.classList.add('dark-mode');
-  darkModeToggle.textContent = 'Tukar menjadi Siang';
-}

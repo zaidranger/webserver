@@ -6,6 +6,7 @@
   <title>Adtec Melaka Management</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <div class="dashboard">
@@ -55,20 +56,21 @@
     <div class="dashboard-panel" id="maklum-balas-content">
       <h2>Maklum Balas</h2>
       <p>Berkongsi maklum balas dan cadangan anda.</p>
-      <form id="feedback-form">        
-        <label for="Developer">Developer:</label>
-        <select id="Developer" required>
-          <option value="monyetzaid@gmail.com">monyetzaid@gmail.com</option>
-          <option value="mnfarhanishak03@gmail.com">mnfarhanishak03@gmail.com</option>
-          <option value="timothybarrysuana28@gmail.com">timothybarrysuana28@gmail.com</option>
-        </select>
-        <br
-        <label for="subject">Subjek:</label>
-        <input type="text" id="subject" required>
-        <label for="message">Mesej:</label>
-        <textarea id="message" required></textarea>
-        <button type="submit">Hantar</button>
-      </form>
+      <div id="zammad-feedback-form">form will be placed in here</div>
+
+      <script id="zammad_form_script" src="https://ticket.pta15.dedyn.io/assets/form/form.js"></script>
+      
+      <script>
+      $(function() {
+        $('#zammad-feedback-form').ZammadForm({
+          messageTitle: 'Maklum Balas',
+          messageSubmit: 'Hantar',
+          messageThankYou: 'Terima kasih kerana memberi maklum balas (#%s)! Kami akan kembali kepada anda secepat mungkin.',
+          noCSS: true,
+          attachmentSupport: true
+        });
+      });
+      </script>
     </div>
   </div>
 
