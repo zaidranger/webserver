@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embedded Remote Desksstop</title>
+  <title>Adtec Melaka Management</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <div class="dashboard">
     <div class="dashboard-tabs">
+      <img src="logo.jpeg" class="dashboard-logo">
       <button class="dashboard-tab">Informasi</button>
-      <button class="dashboard-tab">Support Tiket</button>
-      <button class="dashboard-tab">Muka Depan</button>
+      <button class="dashboard-tab">Tiket Sokongan</button>
+      <button class="dashboard-tab">Konfigurasi</button>
       <button class="dashboard-tab">Carta Organisasi</button>
       <button class="dashboard-tab">Maklum Balas</button>
     </div>
@@ -22,29 +25,58 @@
       <h2>Informasi</h2>
       <p>Maklumat penting dan terkini mengenai sistem.</p>
     </div>
-    <div class="dashboard-panel" id="support-content">
-      <h2>Support Tiket</h2>
+    <div class="dashboard-panel" id="tiket-sokongan-content">
+      <h2>Tiket Sokongan</h2>
       <p>Buat atau lihat status tiket sokongan anda.</p>
     </div>
-    <div class="dashboard-panel" id="muka-depan-content">
-      <h2>Muka Depan</h2>
+    <div class="dashboard-panel" id="konfigurasi-content">
+      <h2>Konfigurasi</h2>
       <p>Antaramuka utama sistem pengurusan.</p>
+      <div class="theme-customization">
+        <button id="dark-mode-toggle" class="dark-mode-btn">Tukar menjadi Malam</button>
+        <div class="color-picker-container">
+          <label for="theme-color">Pilih Warna Tema:</label>
+          <input type="color" id="theme-color" value="#007bff">
+        </div>
+        <div class="color-preview">
+          <div class="preview-box" style="background-color: var(--primary-color)"></div>
+        </div>
+      </div>
     </div>
     <div class="dashboard-panel" id="carta-content">
       <h2>Carta Organisasi</h2>
-      <p>Struktur organisasi dan maklumat hubungan.</p>
+      <img src="carta.png" alt="Carta Organisasi" class="carta-image">
+      <div class="carta-details">
+        <p>Struktur organisasi dan maklumat hubungan.</p>
+        <p>Maklumat lanjut mengenai struktur organisasi ADTEC Melaka.</p>
+      </div>
     </div>
     <div class="dashboard-panel" id="maklum-balas-content">
       <h2>Maklum Balas</h2>
       <p>Berkongsi maklum balas dan cadangan anda.</p>
+      <div id="zammad-feedback-form">form will be placed in here</div>
+
+      <script id="zammad_form_script" src="https://ticket.pta15.dedyn.io/assets/form/form.js"></script>
+      
+      <script>
+      $(function() {
+        $('#zammad-feedback-form').ZammadForm({
+          messageTitle: 'Maklum Balas',
+          messageSubmit: 'Hantar',
+          messageThankYou: 'Terima kasih kerana memberi maklum balas (#%s)! Kami akan kembali kepada anda secepat mungkin.',
+          noCSS: true,
+          attachmentSupport: true
+        });
+      });
+      </script>
     </div>
   </div>
 
   <div class="tabs-section">
     <div class="tab-buttons">
-      <button class="tab-button">Lab 1</button>
-      <button class="tab-button">Lab 2</button>
-      <button class="tab-button">Lab 3</button>
+      <button class="tab-button">Makmal 6 (5B)</button>
+      <button class="tab-button">Makmal 5 (PTA)</button>
+      <button class="tab-button">VM & LXC (Servers)</button>
     </div>
   </div>
 
@@ -54,11 +86,14 @@
   </div>
 
   <div class="profile-section">
-    <img src="profile.jpg" alt="Profile Photo" class="profile-photo">
-    <h2>User Bio</h2>
-    <p>This is the user's bio section. Add your information here.</p>
-  </div>
+    <img src="bad.png" alt="Gambar Pengguna" class="profile-photo">
+    <h2>Maklumat Pensyarah</h2>
+    <p>Nama: Encik Badri bin Haji Sidek</p>
+    <p>Pangkat: Pengajar DV7 (KC)</p>
+    <p>Email Address: badri@jtm.gov.my</p>
+    <p>Jumlah VM/LXC: 11</p>
+    <p>Jumlah Komputer: 78</p>
 
+
+  </div>
   <script src="script.js"></script>
-</body>
-</html>
